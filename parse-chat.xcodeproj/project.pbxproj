@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03289F08713EAEBD25A8B000 /* Pods_parse_chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99237F309A06ADF71B542953 /* Pods_parse_chat.framework */; };
+		262F84321E5F88D400FB62E4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262F84311E5F88D400FB62E4 /* ChatViewController.swift */; };
 		26EE4D461E5F64E800D16407 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EE4D451E5F64E800D16407 /* AppDelegate.swift */; };
 		26EE4D4B1E5F64E800D16407 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26EE4D491E5F64E800D16407 /* Main.storyboard */; };
 		26EE4D4E1E5F64E800D16407 /* parse_chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26EE4D4C1E5F64E800D16407 /* parse_chat.xcdatamodeld */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		0E858B46CB0892C2CAAFE446 /* Pods-parse-chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-parse-chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-parse-chat/Pods-parse-chat.release.xcconfig"; sourceTree = "<group>"; };
+		262F84311E5F88D400FB62E4 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		26EE4D421E5F64E800D16407 /* parse-chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "parse-chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26EE4D451E5F64E800D16407 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26EE4D4A1E5F64E800D16407 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				26EE4D5B1E5F66B000D16407 /* LoginViewController.swift */,
 				26EE4D5D1E5F718600D16407 /* SignupViewController.swift */,
+				262F84311E5F88D400FB62E4 /* ChatViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				26EE4D5C1E5F66B000D16407 /* LoginViewController.swift in Sources */,
 				26EE4D4E1E5F64E800D16407 /* parse_chat.xcdatamodeld in Sources */,
 				26EE4D5E1E5F718600D16407 /* SignupViewController.swift in Sources */,
+				262F84321E5F88D400FB62E4 /* ChatViewController.swift in Sources */,
 				26EE4D461E5F64E800D16407 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
