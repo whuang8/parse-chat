@@ -9,13 +9,23 @@
 import UIKit
 import Parse
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var messageField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var messages: [PFObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ChatViewController.onTimer), userInfo: nil, repeats: true)
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
 
-        // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +49,36 @@ class ChatViewController: UIViewController {
 
         }
     }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell") as! MessageCell
+        cell.messageLabel.text = messages[indexPath.row]["text"] as! String?
+        return cell
+    }
+    
+    func onTimer() {
+        let query = PFQuery(className:"Message")
+        query.order(byDescending: "createdAt")
+        query.findObjectsInBackground { (messages: [PFObject]?, error: Error?) in
+            if error == nil {
+                print("Successfully retrieved \(messages!.count) messages.")
+                let messagesArray = messages!
+                self.messages = messagesArray
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error?.localizedDescription)")
+            }
+
+        }
+    }
+
 
     /*
     // MARK: - Navigation
