@@ -32,10 +32,16 @@ class SignupViewController: UIViewController {
         user.username = emailField.text
         user.signUpInBackground { (succeeded: Bool, error: Error?) in
             if let error = error {
-                let errorDescription = error.localizedDescription
-                // Display error to user
+                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             } else {
                 // Hooray! Let them use the app now.
+                let alert = UIAlertController(title: "Success", message: "Your account has been created", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }

@@ -36,18 +36,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func sendButtonPressed(_ sender: Any) {
         let message = PFObject(className:"Message")
         message["text"] = messageField.text
-        
+        message["user"] = PFUser.current()
         message.saveInBackground { (success: Bool, error: Error?) in
             if (success) {
                 print(message)
+                
                 // The object has been saved.
             } else {
                 let errorDescription = error?.localizedDescription
                 print("error: \(errorDescription)")
                 // Display error
             }
-
         }
+        messageField.text = ""
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,11 +58,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell") as! MessageCell
         cell.messageLabel.text = messages[indexPath.row]["text"] as! String?
+        if let user = messages[indexPath.row]["user"] {
+            cell.userLabel.text = (user as! PFUser).username
+        } else {
+            cell.userLabel.text = "Anonymous User"
+        }
         return cell
     }
     
     func onTimer() {
         let query = PFQuery(className:"Message")
+        query.includeKey("user")
         query.order(byDescending: "createdAt")
         query.findObjectsInBackground { (messages: [PFObject]?, error: Error?) in
             if error == nil {

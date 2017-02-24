@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ddb-Ra-C0o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -115,6 +115,7 @@
                         <outlet property="emailField" destination="6Xq-76-nE8" id="wQn-Ik-aad"/>
                         <outlet property="loginButton" destination="kAg-oh-Xex" id="Z0x-Dr-vnG"/>
                         <outlet property="passwordField" destination="MEX-NZ-2od" id="gS2-ig-uud"/>
+                        <segue destination="OAb-kq-P45" kind="presentation" identifier="MessagesSegue" id="38d-1I-FdS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -179,21 +180,31 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiY-uC-uEk">
-                                                    <rect key="frame" x="8" y="8" width="69" height="21"/>
+                                                    <rect key="frame" x="8" y="22" width="69" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iwill@purdue.edu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ezb-0E-t7s">
+                                                    <rect key="frame" x="8" y="4" width="83" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.25098039220000001" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Ezb-0E-t7s" firstAttribute="leading" secondItem="P9o-SZ-ywN" secondAttribute="leading" constant="8" id="1zU-Tk-Hf0"/>
                                                 <constraint firstItem="wiY-uC-uEk" firstAttribute="leading" secondItem="P9o-SZ-ywN" secondAttribute="leading" constant="8" id="1zn-ed-5uh"/>
+                                                <constraint firstItem="Ezb-0E-t7s" firstAttribute="top" secondItem="P9o-SZ-ywN" secondAttribute="top" constant="4" id="7K6-Ow-clG"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wiY-uC-uEk" secondAttribute="trailing" constant="8" id="XHZ-uB-75V"/>
-                                                <constraint firstItem="wiY-uC-uEk" firstAttribute="top" secondItem="P9o-SZ-ywN" secondAttribute="top" constant="8" id="jJx-Or-5zb"/>
+                                                <constraint firstItem="wiY-uC-uEk" firstAttribute="top" secondItem="Ezb-0E-t7s" secondAttribute="bottom" constant="6" id="cMN-QQ-4fJ"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wiY-uC-uEk" secondAttribute="bottom" constant="8" id="pdx-QZ-8GH"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ezb-0E-t7s" secondAttribute="trailing" constant="8" id="rg6-Iv-ePI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageLabel" destination="wiY-uC-uEk" id="PIF-zg-WLw"/>
+                                            <outlet property="userLabel" destination="Ezb-0E-t7s" id="mCn-kB-Ljb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -335,4 +346,7 @@
     <resources>
         <image name="chat" width="128" height="128"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="38d-1I-FdS"/>
+    </inferredMetricsTieBreakers>
 </document>

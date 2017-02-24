@@ -33,10 +33,12 @@ class LoginViewController: UIViewController {
             if let error = error {
                 let errorDescription = error.localizedDescription
                 print(errorDescription)
-                // Display error
+                let alert = UIAlertController(title: "Error", message: errorDescription, preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             } else {
                 print("logged in")
-                // Segue
+                self.performSegue(withIdentifier: "MessagesSegue", sender: self)
             }
         }
     }
